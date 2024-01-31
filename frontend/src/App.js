@@ -7,7 +7,7 @@ import UserTable from './components/UserTable';
 import ErrorMessage from './components/ErrorMessage';
 
 const API_URL = 'http://localhost:3000/api/users';
-const GITHUB_TOKEN = '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'; 
+const GITHUB_TOKEN = process.env.REACT_APP_API_KEY; 
 
 
 export default function App() {

@@ -1,5 +1,4 @@
 // server.js
-// main 2
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -12,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 const GITHUB_API_URL = 'https://api.github.com/search/users';
-const GITHUB_TOKEN = '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'; // Replace with your GitHub token
+const GITHUB_TOKEN = process.env.REACT_APP_API_KEY; 
 
 app.get('/api/users', async (req, res) => {
   try {
