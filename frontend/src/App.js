@@ -1,14 +1,14 @@
 // src/App.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import UserTable from './components/UserTable';
 import ErrorMessage from './components/ErrorMessage';
+import { debounce, throttle } from './utils';
 
 const API_URL = 'https://github-search-app.onrender.com/api/users';
-const GITHUB_TOKEN = process.env.REACT_APP_API_KEY; 
-
+const GITHUB_TOKEN = process.env.REACT_APP_API_KEY;
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,15 +16,15 @@ export default function App() {
   const [noUsersFound, setNoUsersFound] = useState(false);
   const [apiError, setApiError] = useState(null);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
+  const fetchUsers = useCallback(
+    debounce(async (query) => {
       try {
-        if (searchQuery.trim() === '') {
+        if (query.trim() === '') {
           setUsers([]);
           return;
         }
 
-        const response = await axios.get(`${API_URL}?q=${searchQuery}&sort=followers`);
+        const response = await axios.get(`${API_URL}?q=${query}&sort=followers`);
         const fetchedUsers = response.data.items;
 
         if (fetchedUsers.length === 0) {
@@ -67,10 +67,17 @@ export default function App() {
         setNoUsersFound(true);
         setApiError('Failed to fetch users. Please try again.');
       }
-    };
+    }, 500), // 500ms debounce
+    []
+  );
 
-    fetchUsers();
-  }, [searchQuery]);
+  useEffect(() => {
+    fetchUsers(searchQuery);
+  }, [searchQuery, fetchUsers]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const clearSearch = () => {
     setSearchQuery('');
@@ -92,7 +99,7 @@ export default function App() {
         <h1>Github User Search</h1>
         <SearchBar
           searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
+          setSearchQuery={handleSearchChange}
           clearSearch={clearSearch}
           handleKeyPress={handleKeyPress}
         />

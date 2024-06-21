@@ -1,17 +1,15 @@
 // src/components/SearchBar.js
 
-// component to display search bar
-
 import React from 'react';
 
- const SearchBar = ({ searchQuery, setSearchQuery, clearSearch, handleKeyPress }) => {
+const SearchBar = ({ searchQuery, setSearchQuery, clearSearch, handleKeyPress }) => {
   return (
     <div className="search-container">
       <input
         type="text"
         placeholder="Start typing Name"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={setSearchQuery}
         onKeyPress={handleKeyPress}
       />
       <button onClick={clearSearch}>Clear</button>
