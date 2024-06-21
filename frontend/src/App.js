@@ -1,11 +1,11 @@
 // src/App.js
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import UserTable from './components/UserTable';
 import ErrorMessage from './components/ErrorMessage';
-import { debounce } from './utils';
+import { debounce, throttle } from './utils';
 
 const API_URL = 'https://github-search-app.onrender.com/api/users';
 const GITHUB_TOKEN = process.env.REACT_APP_API_KEY;
@@ -16,8 +16,8 @@ export default function App() {
   const [noUsersFound, setNoUsersFound] = useState(false);
   const [apiError, setApiError] = useState(null);
 
-  const fetchUsers = useCallback(
-    debounce(async (query) => {
+  useEffect(() => {
+    const fetchUsers = debounce(async (query) => {
       try {
         if (query.trim() === '') {
           setUsers([]);
@@ -67,13 +67,10 @@ export default function App() {
         setNoUsersFound(true);
         setApiError('Failed to fetch users. Please try again.');
       }
-    }, 500), // 500ms debounce
-    []
-  );
+    }, 500); // 500ms debounce
 
-  useEffect(() => {
     fetchUsers(searchQuery);
-  }, [searchQuery, fetchUsers]);
+  }, [searchQuery]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
