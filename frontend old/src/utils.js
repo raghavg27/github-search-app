@@ -1,10 +1,10 @@
 // src/utils.js
 export const debounce = (func, delay) => {
   let timeoutId;
-  return function (...args) {
+  return (...args) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
-      func.apply(this, args);
+      func.apply(null, args);
     }, delay);
   };
 };

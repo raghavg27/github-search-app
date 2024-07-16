@@ -1,0 +1,93 @@
+/* src/App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #282c34;
+  color: white;
+  font-family: 'Roboto', sans-serif; /* Use Google Font Roboto */
+  margin: 0;
+  overflow: hidden;
+  font-size: 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #282c34;
+}
+
+h1 {
+  font-size: 40px; /* Increase font size for the title */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 70px;
+  padding: 20px;
+}
+
+input {
+  flex: 1; /* Allow the input to take the remaining space */
+  margin-right: 10px; /* Add margin between input and button */
+  padding: 12px; /* Increase padding */
+  width: 40%;
+  font-size: 40px;
+}
+
+button {
+  padding: 12px 18px; /* Increase padding */
+  cursor: pointer;
+  font-size: 40px;
+  display: flex;
+}
+
+table {
+  width: 100%;
+  display: block; /* Allow table to be treated as a block element */
+  max-height: calc(100vh - 160px);
+  overflow-y: auto; /* Enable table scrolling */
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 12px; /* Increase padding */
+  text-align: left;
+}
+
+th {
+  background-color: #282c34;
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #555;
+}
+
+.avatar {
+  width: 60px; /* Increase avatar size */
+  height: 60px;
+  border-radius: 50%;
+}
+
+.no-users {
+  color: red;
+  font-size: 20px; /* Increase font size */
+  font-weight: bold;
+  margin-top: 20px;
+}

@@ -1,11 +1,16 @@
 // src/components/ErrorMessage.js
 
-// component to display error message
-
 import React from 'react';
+import { Typography, Box } from '@mui/material';
 
 const ErrorMessage = ({ message }) => {
-  return <p className="error-message">{message}</p>;
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+      <Typography variant="body1" color="error" className="error-message">
+        {message}
+      </Typography>
+    </Box>
+  );
 };
 
 export default ErrorMessage;
