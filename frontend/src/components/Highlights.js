@@ -5,12 +5,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import Brightness4RoundedIcon from '@mui/icons-material/Brightness4Rounded';
 import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
@@ -62,7 +56,6 @@ const items = [
 export default function Highlights() {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
-  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <Box
