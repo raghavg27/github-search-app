@@ -14,7 +14,7 @@ import { debounce } from './utils';
 import axios from 'axios';
 
 const API_URL = 'https://github-search-app.onrender.com/api/users';
-const GITHUB_TOKEN = 'process.env.REACT_APP_API_KEY';
+const GITHUB_TOKEN = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [mode, setMode] = useState('light');
