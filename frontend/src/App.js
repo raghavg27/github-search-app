@@ -16,6 +16,8 @@ import axios from 'axios';
 const API_URL = 'https://github-search-app.onrender.com/api/users';
 const GITHUB_TOKEN = process.env.REACT_APP_API_KEY;
 
+console.log('GitHub Token:', process.env.REACT_APP_API_KEY);
+
 function App() {
   const [mode, setMode] = useState('light');
   const theme = createTheme(getLPTheme(mode));
