@@ -28,7 +28,8 @@ function App() {
   const [noUsersFound, setNoUsersFound] = useState(false);
   const [apiError, setApiError] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  
+  // eslint-disable-next-line
   const fetchUsers = useCallback(
     debounce(async (query) => {
       try {
