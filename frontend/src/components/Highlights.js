@@ -12,7 +12,6 @@ import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import SpeedRoundedIcon from '@mui/icons-material/SpeedRounded';
 import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 const items = [
   {
