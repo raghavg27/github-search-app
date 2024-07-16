@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+.import React, { useState, useEffect, useCallback } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
@@ -17,6 +17,7 @@ const API_URL = 'https://github-search-app.onrender.com/api/users';
 const GITHUB_TOKEN = process.env.REACT_APP_API_KEY;
 
 console.log('GitHub Token:', process.env.REACT_APP_API_KEY);
+console.log('All env:', process.env);
 
 function App() {
   const [mode, setMode] = useState('light');
